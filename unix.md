@@ -4,11 +4,13 @@
   * know core functionalities of frequently used command line tools!
   * there are tools for everything, but finding the right one can be hard
 
+---
 # In Essence
 
   * UNIX tool philosophy: do one thing and do it right
   * everything is solvable in different ways, but it shouldn't always be ruby!
 
+---
 # GREP
 
   The grep utility searches any given input files, selecting lines that match
@@ -22,6 +24,7 @@ There are loads of grep variants:
 
 ... who knew?
 
+---
 ## Read the docs: man grep
 
 grep supports a quinquadecillion nice options, see the man page - examples:
@@ -31,17 +34,20 @@ grep supports a quinquadecillion nice options, see the man page - examples:
   * ```--files-with-matches```
   * ```--invert-match``` (really nice "detour" for hard regular expressions. build a simple one and only print lines that DO NOT match it)
 
+---
 ## Some real-life grep usage examples
 
   * WAY cooler than most ack/ag usage: ```vim `egrep -irl 'buyer_name' *` ```
   * Just give me the email addresses: ```egrep --only-matching '[^;]+@[^;]+' customers.csv```
   * I know a fact, and want lines that do not match the fact...: ```egrep -v '[^;]+@[^;]+' receipients.csv > wrong_emails```
 
+---
 # tr - translate characters
 
   * Does anybody here know about this tool?
   * Input -> Processing -> Output    (Captain Obvious to the rescue!)
 
+---
 ## Examples
 
   * ```tr -cs "[:alpha:]" "\n" < file1``` -> Create a list of the words in file1, one per line
@@ -49,6 +55,7 @@ grep supports a quinquadecillion nice options, see the man page - examples:
   * ```tr -cd "[:print:]" < file1``` -> Strip out non-printable characters from file1.
   * ```tr "[=e=]" "e"``` -> Remove diacritical marks from all accented variants of the letter 'e':
 
+---
 # sed - stream line editor
 
   * reads input line by line and processes it with respect to a given list of commands
@@ -60,6 +67,7 @@ To make sure, you got me right:
   **sed is a full featured text editor - without a GUI!**
 
 
+---
 # cut | sort | uniq
 
   * cut
@@ -73,6 +81,7 @@ To make sure, you got me right:
    * read all input at once and collaps repeating lines *there* to one line *here*
    * ```echo -e 1\\n1\\n2 | uniq```
 
+---
 These tools are often used together! E.g.:
 
 ```
@@ -82,6 +91,7 @@ These tools are often used together! E.g.:
 grep '@' mailings.csv | cut -f1 -d';' | sort | uniq 
 ```
 
+---
 # wc
 
   * "word count" - but generally counts file size, words, lines, ...
@@ -90,12 +100,14 @@ grep '@' mailings.csv | cut -f1 -d';' | sort | uniq
 
 
 
+---
 # AWK
 
   * but AWK is GREAT for data/text file processing
   * is a scripting language that applies logic to each line of a data file
   * AWK is a VERY SIMPLE language, the only THING is the kinda unusual way of processing input!
 
+---
 ## Real World AWK example:
 
 ```
@@ -112,6 +124,7 @@ BEGIN {  FS=";" }
 }
 ```
 
+---
 # To be continued
 
 USE your shell!

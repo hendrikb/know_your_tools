@@ -11,7 +11,7 @@
   * everything is solvable in different ways, but it shouldn't always be ruby!
 
 ---
-# GREP
+# grep
 
   The grep utility searches any given input files, selecting lines that match
   one or more patterns.
@@ -30,16 +30,16 @@ There are loads of grep variants:
 grep supports a quinquadecillion nice options, see the man page - examples:
 
   * ```--only-matching```
-  * ```--color``` (really nice to "build" regular expressions from scratch)
+  * ```--color```<br />→ helps you to "build" regular expressions from scratch
   * ```--files-with-matches```
-  * ```--invert-match``` (really nice "detour" for hard regular expressions. build a simple one and only print lines that DO NOT match it)
+  * ```--invert-match```<br />→ really nice "detour" for hard regular expressions. build a simple one and only print lines that DO NOT match it
 
 ---
 ## Some real-life grep usage examples
 
-  * WAY cooler than most ack/ag usage:<br /> ```egrep -irl 'buyer_name' * | xargs vim```
-  * Just give me the email addresses:<br />```egrep --only-matching '[^;]+@[^;]+' customers.csv```
-  * I know a fact, and want lines that do not match the fact...:<br /> ```egrep -v '[^;]+@[^;]+' receipients.csv > wrong_emails```
+  * ```vim `egrep -irl 'buyer_name' *` ```<br />→ WAY cooler than most ack/ag usage
+  * ```egrep --only-matching '[^;]+@[^;]+' customers.csv``` <br />→ Just give me the email addresses
+  * ```egrep -v '[^;]+@[^;]+' receipients.csv > wrong_emails```<br />→ I know a fact, and want lines that do not match the fact...
 
 ---
 # tr - translate characters
@@ -50,22 +50,25 @@ grep supports a quinquadecillion nice options, see the man page - examples:
 ---
 ## Examples
 
+*All taken from ```man tr```*
+
   * ```tr -cs "[:alpha:]" "\n" < file1``` <br />→ Create a list of the words in file1, one per line
-  * ```tr "[:lower:]" "[:upper:]" < file1``` <br />→ Translate the contents of file1 to upper-case.
-  * ```tr -cd "[:print:]" < file1``` <br />→ Strip out non-printable characters from file1.
-  * ```tr "[=e=]" "e"``` <br />→ Remove diacritical marks from all accented variants of the letter 'e':
+  * ```tr "[:lower:]" "[:upper:]" < file1``` <br />→ Translate the contents of file1 to upper-case
+  * ```tr -cd "[:print:]" < file1``` <br />→ Strip out non-printable characters from file1
+  * ```tr "[=e=]" "e"``` <br />→ Remove diacritical marks from all accented variants of letter e
 
 ---
 # sed - stream line editor
 
   * reads input line by line and processes it with respect to a given list of commands
-  * very common: search-and-replace with regex: <br />```sed 's/Karl-Marx-Stadt/Chemnitz/i' cities.txt > out.txt```
-  * BUT, the list of commands is VERY BIG, yet, easy: <br />```sed -n '30,35p' mail.rb```
+  * ```sed 's/Karl-Marx-Stadt/Chemnitz/i' cities.txt > out.txt```<br />→ very common: search-and-replace with regex
+  * ```sed -n '30,35p' mail.rb```<br />→ BUT, the list of commands is VERY BIG, yet, easy
 
+---
 To make sure, you got me right:
 
-  * **sed is a full featured text editor - without a GUI!**
-  * Commands similar to Vim - it has all the same roots (see: <a
+  * sed is a **full featured** text editor - **without a GUI!**
+  * Commands are similar to Vim - they all have the same roots (see: <a
     href="http://blog.sanctum.geek.nz/actually-using-ed/">Blog Post: Actually
     Using ED</a>)
 
@@ -73,21 +76,30 @@ To make sure, you got me right:
 ---
 # cut | sort | uniq
 
-  * cut
-    * treat text input file as a 'table' and only print certain columns
-    * excellent for cutting down CSV files!
-    * ```cut -f 3,4 -d';' mailings.csv``` <br /> → print third and fourth columns of mailings.csv (where fields are seperated by a semicolon)
+## cut
+  * treat text input file as a 'table' and only print certain columns
+  * excellent for cutting down CSV files!
+  * ```cut -f 3,4 -d';' mailings.csv``` <br /> → print third and fourth columns of mailings.csv (where fields are seperated by a semicolon)
 
 ---
-  * sort
-    * take all input and sort it... (oh wow)
-    * BUT, see ```man sort``` to get an idea how powerful GNU sort is!
-    * ```sort -k2 -t';' -f -M -r email_dates.csv``` <br />→ this reverse-sorts lines in email_dates.csv (with ; as seperator) with respect to (case-insensitive) month names!
+## sort
+  * take all input and sort it... (oh wow)
+  * BUT, see ```man sort``` to get an idea how powerful GNU sort is!
+  * ```sort -k2 -t';' -f -M -r email_dates.csv``` <br />→ this reverse-sorts lines in email_dates.csv (with ; as seperator) with respect to (case-insensitive) month names!
 
 ---
-  * uniq
-   * read all input at once and collaps repeating lines *there* to one line *here*
-   * ```echo -e 1\\n1\\n2 | uniq```
+## uniq
+read all input at once and collaps repeating lines *there* to one line *here*
+
+```
+[16:06] ✔ hendrik code → echo -e 1\\n1\\n2
+1
+1
+2
+[16:06] ✔ hendrik code → echo -e 1\\n1\\n2 | uniq
+1
+2
+```
 
 ---
 These tools are often used together! E.g.:
@@ -96,7 +108,8 @@ These tools are often used together! E.g.:
 # print uniq email addresses from mailings.csv
 # (where email addresses are in the CSV's 1st column)
 
-grep '@' mailings.csv | cut -f1 -d';' | sort | uniq 
+grep '@' mailings.csv | cut -f1 -d';' | \
+tr "[:upper:]" "[:lower:]" | sort | uniq 
 ```
 
 ---
@@ -104,7 +117,14 @@ grep '@' mailings.csv | cut -f1 -d';' | sort | uniq
 
   * "word count" - but generally counts file size, words, lines, ...
   * great way to verify filtering results
-    * e.g. "After uniq'ing email addresses there should be **fewer** lines in the output file than in the input file..."
+    * e.g. "After grep'ing email addresses there should be **fewer** lines in the output file than in the input file..."
+
+```
+[16:55] ✔ hendrik code → wc -l mailings.csv
+72654 mailings.csv
+[16:55] ✔ hendrik code → grep '@' mailings.csv | wc -l
+48436
+```
 
 ---
 # AWK
@@ -148,5 +168,30 @@ USE your shell!
  * ```alias s='git status'```
  * Pipe your outputs a lot from command to command, no disk utilization needed!
  * Modify your PS1 prompt to immediately see git repository status or exit
-   codes:<br />```[14:10] ✔ hendrik [master *] know_your_tools →```
+   codes:<br />```[14:10] ✔ hendrik [master *] know_your_tools → ...```
  * ... and read the ```man``` pages
+
+---
+# To be continued II
+
+* learn for yourself how awesome ```screen``` is: ```man screen```
+* another nice monitoring tool is ```watch```<br />```watch -n1 date```
+* Run previous commands quicker with a bang:<br />
+
+```
+[17:09] ✔ hendrik code → date +%H:%M:%S
+17:09:59
+[17:09] ✔ hendrik code → echo something different
+something different
+[17:10] ✔ hendrik code → !da
+date +%H:%M:%S
+17:10:05
+```
+
+---
+# Hint: markdown to impress
+
+<a
+href='https://raw.githubusercontent.com/hendrikb/know_your_tools/master/unix.md'>This document</a> is originally written in <a href='http://daringfireball.net/projects/markdown/'>markdown</a> but can be rendered into an
+<a href="http://bartaz.github.io/impress.js/">impress.js</a> presentation using <a
+href="https://github.com/egonSchiele/mdpress">mdpress</a>

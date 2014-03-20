@@ -37,34 +37,37 @@ grep supports a quinquadecillion nice options, see the man page - examples:
 ---
 ## Some real-life grep usage examples
 
-  * WAY cooler than most ack/ag usage: ```vim `egrep -irl 'buyer_name' *` ```
-  * Just give me the email addresses: ```egrep --only-matching '[^;]+@[^;]+' customers.csv```
-  * I know a fact, and want lines that do not match the fact...: ```egrep -v '[^;]+@[^;]+' receipients.csv > wrong_emails```
+  * WAY cooler than most ack/ag usage:<br /> ```egrep -irl 'buyer_name' * | xargs vim```
+  * Just give me the email addresses:<br />```egrep --only-matching '[^;]+@[^;]+' customers.csv```
+  * I know a fact, and want lines that do not match the fact...:<br /> ```egrep -v '[^;]+@[^;]+' receipients.csv > wrong_emails```
 
 ---
 # tr - translate characters
 
   * Does anybody here know about this tool?
-  * Input -> Processing -> Output    (Captain Obvious to the rescue!)
+  * Input → Character Processing → Output    (Captain Obvious to the rescue!)
 
 ---
 ## Examples
 
-  * ```tr -cs "[:alpha:]" "\n" < file1``` -> Create a list of the words in file1, one per line
-  * ```tr "[:lower:]" "[:upper:]" < file1``` -> Translate the contents of file1 to upper-case.
-  * ```tr -cd "[:print:]" < file1``` -> Strip out non-printable characters from file1.
-  * ```tr "[=e=]" "e"``` -> Remove diacritical marks from all accented variants of the letter 'e':
+  * ```tr -cs "[:alpha:]" "\n" < file1``` <br />→ Create a list of the words in file1, one per line
+  * ```tr "[:lower:]" "[:upper:]" < file1``` <br />→ Translate the contents of file1 to upper-case.
+  * ```tr -cd "[:print:]" < file1``` <br />→ Strip out non-printable characters from file1.
+  * ```tr "[=e=]" "e"``` <br />→ Remove diacritical marks from all accented variants of the letter 'e':
 
 ---
 # sed - stream line editor
 
   * reads input line by line and processes it with respect to a given list of commands
-  * very common: search-and-replace with regex: ```sed 's/Karl-Marx-Stadt/Chemnitz/i' cities.txt > out.txt```
-  * BUT, the list of commands is VERY BIG, yet, easy: ```sed -n '30,35p' mail.rb```
+  * very common: search-and-replace with regex: <br />```sed 's/Karl-Marx-Stadt/Chemnitz/i' cities.txt > out.txt```
+  * BUT, the list of commands is VERY BIG, yet, easy: <br />```sed -n '30,35p' mail.rb```
 
 To make sure, you got me right:
 
-  **sed is a full featured text editor - without a GUI!**
+  * **sed is a full featured text editor - without a GUI!**
+  * Commands similar to Vim - it has all the same roots (see: <a
+    href="http://blog.sanctum.geek.nz/actually-using-ed/">Blog Post: Actually
+    Using ED</a>)
 
 
 ---
@@ -72,11 +75,16 @@ To make sure, you got me right:
 
   * cut
     * treat text input file as a 'table' and only print certain columns
-    * ```cut -f 3,4 -d';' mailings.csv``` => print third and fourth columns of mailings.csv (where fields are seperated by a semicolon)
+    * excellent for cutting down CSV files!
+    * ```cut -f 3,4 -d';' mailings.csv``` <br /> → print third and fourth columns of mailings.csv (where fields are seperated by a semicolon)
+
+---
   * sort
     * take all input and sort it... (oh wow)
-    * BUT, see man sort to get an idea how powerful GNU sort is!
-    * ```sort -k2 -t';' -f -M -r email_dates.csv``` this reverse-sorts lines in email_dates.csv (with ; as seperator) with respect to (case-insensitive) month names!
+    * BUT, see ```man sort``` to get an idea how powerful GNU sort is!
+    * ```sort -k2 -t';' -f -M -r email_dates.csv``` <br />→ this reverse-sorts lines in email_dates.csv (with ; as seperator) with respect to (case-insensitive) month names!
+
+---
   * uniq
    * read all input at once and collaps repeating lines *there* to one line *here*
    * ```echo -e 1\\n1\\n2 | uniq```
@@ -96,16 +104,16 @@ grep '@' mailings.csv | cut -f1 -d';' | sort | uniq
 
   * "word count" - but generally counts file size, words, lines, ...
   * great way to verify filtering results
-    * e.g. "After UNIQing email addresses there should be fewer lines in the output file than in the input file..."
-
-
+    * e.g. "After uniq'ing email addresses there should be **fewer** lines in the output file than in the input file..."
 
 ---
 # AWK
 
-  * but AWK is GREAT for data/text file processing
-  * is a scripting language that applies logic to each line of a data file
-  * AWK is a VERY SIMPLE language, the only THING is the kinda unusual way of processing input!
+  * AWK is GREAT for data/text file processing, e.g. CSV
+    * scripting language that applies logic to **each line** of a data file
+    * pre- and postprocessing is possible
+  * AWK has a very simple syntax, the only THING is the kinda unusual way of processing input!
+  * Bonus: AWK is VERY FAST!
 
 ---
 ## Real World AWK example:
@@ -116,11 +124,16 @@ grep '@' mailings.csv | cut -f1 -d';' | sort | uniq
 BEGIN {  FS=";" }
 
 {
+  # email addresses are in first column of CSV!
   email = tolower($1)
   if (length(emails[email]) == 0) {
     print $0
   }
   emails[email] = "already seen"
+}
+
+END {
+  print "I saw " length(emails) " unique email addresses"
 }
 ```
 
@@ -133,4 +146,7 @@ USE your shell!
  * ```head```
  * ```for file in * ; do echo $file ; done```
  * ```alias s='git status'```
- * ...
+ * Pipe your outputs a lot from command to command, no disk utilization needed!
+ * Modify your PS1 prompt to immediately see git repository status or exit
+   codes:<br />```[14:10] ✔ hendrik [master *] know_your_tools →```
+ * ... and read the ```man``` pages

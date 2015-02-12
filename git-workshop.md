@@ -20,13 +20,7 @@
 
 ---
 
-## Workflow
-
-You work on your code, you want most parts of your code to be ...
-
-* used
-* shared
-* or thrown away
+## Workflow (local)
 
 ```
 | Reposotory |

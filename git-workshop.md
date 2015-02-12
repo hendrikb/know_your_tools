@@ -43,11 +43,15 @@ You work on your code, you want most parts of your code to be ...
 
 ---
 
+## Merges
+
+
+
+---
+
+
 ## Remotes
 
-Remotes are "other repositories" serving basically the same code base
-
-Often seen:
   * "*origin*", services our code centrally
     are working on
   * "*upstream*", services as original code base when we are working on a fork

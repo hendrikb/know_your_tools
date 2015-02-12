@@ -46,10 +46,15 @@
 
 ## Merges
 
-
+* merge code from one branch into another branch 
+  * e.g. your code goes back to master branch
+* what if target branch has changed in between time? (**merge conflict**)
+  * trivial merges can be merged easily
+  * changes to the same file in diff. locations can be merged intelligently
+  * changes to the same file in similar locations must be manually resolved
+* various "merge strategies" exists for various kind of problems
 
 ---
-
 
 ## Remotes
 

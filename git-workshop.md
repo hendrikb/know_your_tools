@@ -58,9 +58,11 @@
 
 ## Remotes
 
-  * "*origin*", services our code centrally
-    are working on
-  * "*upstream*", services as original code base when we are working on a fork
+  * "other locations" of your project's source code
+  * conventions:
+    * "*origin*", services our code centrally
+      are working on
+    * "*upstream*", services as original code base when we are working on a fork
 
 ---
 

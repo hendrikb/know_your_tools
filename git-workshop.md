@@ -35,6 +35,13 @@
 > git gets easier once you get the basic idea that branches are homeomorphic endofunctors mapping submanifolds of a Hilbert space.
 > -- https://twitter.com/tabqwerty/status/45611899953491968
 
+* most important: **master** branch
+* branch off of master branch to 
+  * develop features
+  * test things
+* keep code on master working!
+* throw away branches after merging to master branch
+
 ---
 
 ## Merges

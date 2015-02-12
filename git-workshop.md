@@ -52,7 +52,7 @@
   * changes to the same file in different locations can be merged intelligently
     by git itself
   * changes to the same file in similar locations must be resolved manually
-* various "merge strategies" exists for various kind of scenarios
+* various "merge strategies" exist for various kind of scenarios
 
 ---
 
@@ -60,9 +60,8 @@
 
   * "other locations" of your project's source code
   * conventions:
-    * "*origin*", services our code centrally
-      are working on
-    * "*upstream*", services as original code base when we are working on a fork
+    * "**origin**", services our code centrally
+    * "**upstream**", services as original code base when we are working on a fork
 
 ---
 
@@ -170,24 +169,31 @@ git push
 
 ---
 
-# Specials & best practices
+# Goodies
 
   * git stash
-  * git aliases
+  * use bash aliases: alias gs='\git status'
   * git commit --amend
   * git cherry-pick
   * git instaweb --http=webrick
 
-https://github.com/erlang/otp/wiki/Writing-good-commit-messages
+---
+
+# Must Reads / Good Practices
+
+* http://marklodato.github.io/visual-git-guide/index-en.html
+* https://github.com/erlang/otp/wiki/Writing-good-commit-messages
+
+* Keep your commits tiny, use ```git add -p``` often
+* Keep commit messages short, "use present tense"
 
 ---
 
 # Lost? Git Help!
 
   * The officials: http://git-scm.com/   -- "ProGit" book
-  * Visual guides to git: http://marklodato.github.io/visual-git-guide/index-en.html
-  * Git Goodies: http://tokkee.org/talks/froscon12-git-goodies.pdf
   * Git Einführung: http://www.linuxtag.org/2013/fileadmin/www.linuxtag.org/slides/Julius_Plenz_-_Git-Einfuehrung.e141.pdf
+  * Git Goodies: http://tokkee.org/talks/froscon12-git-goodies.pdf
 
 ---
 

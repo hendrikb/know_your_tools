@@ -138,6 +138,7 @@ Warning, there be dragons ahead!
 ```
 git reset
 git revert
+git clean
 ```
 
 ---

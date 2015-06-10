@@ -16,3 +16,5 @@ Neat Stuff
    Vim Mode
    PS1
    bash completion
+   shopt -s dotglob
+   Control ENV viriables

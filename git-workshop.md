@@ -97,11 +97,11 @@ http://nvie.com/posts/a-successful-git-branching-model/
 
 ---
 
-## Prerequesites (on Ubuntu)
+## Prerequisites (on Ubuntu)
 
 ```
 sudo apt-get install git openssh-client
-ssh-key-gen -b 4096 -C'your@example.com'
+ssh-key-gen -b 4096 -C 'your.email@example.com'
 ```
 
 ---

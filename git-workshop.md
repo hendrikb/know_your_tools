@@ -16,7 +16,8 @@
 # Theory
 
 > finally figuring out that git commands are strangely named graph manipulation commands--creating/deleting nodes, moving pointers around
-> -- Kent Beck https://twitter.com/kentbeck/status/42657237986054144
+
+-- Kent Beck https://twitter.com/kentbeck/status/42657237986054144
 
 ---
 
@@ -40,7 +41,8 @@
 ## Branches
 
 > git gets easier once you get the basic idea that branches are homeomorphic endofunctors mapping submanifolds of a Hilbert space.
-> -- https://twitter.com/tabqwerty/status/45611899953491968
+
+-- https://twitter.com/tabqwerty/status/45611899953491968
 
 ![branches](images/git-workshop/branches.svg)
 

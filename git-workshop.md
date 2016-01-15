@@ -68,10 +68,10 @@ http://nvie.com/posts/a-successful-git-branching-model/
 
 * "get that code from my branch into the `master` branch"
 * what if target branch has changed in between time? **merge conflict**
-  * trivial merges are made automatically
-    * different file changed
-    * same file, different location changed
-  * changes to the same file in similar locations must be resolved manually
+    * trivial merges are made automatically
+        * different file changed
+        * same file, different location changed
+    * changes to the same file in similar locations must be resolved manually
 
 ---
 

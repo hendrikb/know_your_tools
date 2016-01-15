@@ -179,9 +179,7 @@ git clean
 
 ```bash
 git branch
-
 git checkout
-
 git merge
 ```
 

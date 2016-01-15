@@ -125,10 +125,14 @@ git help
 
 ---
 
+## Getting started...
+
 ```bash
-git init
+git clone
 git status
 ```
+
+Copy repo URL here: http://tiny.cc/kp_git_ws
 
 ---
 
@@ -151,8 +155,8 @@ git commit
 Variants:
 
 ```bash
-git commit -m'use describing message'
-git commit -am'go from working dir to repo directly'
+git commit -m 'Use describing message'
+git commit -am 'Commit all the things!'
 ```
 
 Pro Tip: https://github.com/erlang/otp/wiki/Writing-good-commit-messages
@@ -171,7 +175,7 @@ git clean
 
 ---
 
-# Branches, Merges, Conflicts, ...
+## Branches, Merges, Conflicts, ...
 
 ```bash
 git branch
@@ -179,14 +183,20 @@ git branch
 git checkout
 
 git merge
-
-git rebase
-
 ```
 
 ---
 
-# Working with remote repositories
+## Getting fancy with rebase
+
+![rebase](images/git-workshop/rebase.svg)
+
+* "Cuts" your history and "glues" it onto the desired commit
+* actually does not cut anything, all commits are *replayed* (i.e. a copy is created)
+
+---
+
+## Working with remote repositories
 
 ```bash
 git remote

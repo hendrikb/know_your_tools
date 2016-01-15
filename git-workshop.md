@@ -172,7 +172,7 @@ git clean
 # Branches, Merges, Conflicts, ...
 
 ```
-git branches
+git branch
 
 git checkout
 
@@ -187,7 +187,7 @@ git rebase
 # Working with remote repositories
 
 ```
-git remotes
+git remote
 git clone
 
 git pull

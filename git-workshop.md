@@ -26,16 +26,39 @@
 
 ---
 
+## Keeping a History
+
+![XKCD commit history](https://imgs.xkcd.com/comics/git_commit.png)
+(https://xkcd.com/1296/)
+
+* changes stored in commits
+* each commit references its parent
+* => linked list building a history of your code
+
+---
+
 ## Branches
 
 > git gets easier once you get the basic idea that branches are homeomorphic endofunctors mapping submanifolds of a Hilbert space.
 > -- https://twitter.com/tabqwerty/status/45611899953491968
 
-* working code is on **master** branch
-* branch off of master branch to
-  * develop features
-  * test things
+![branches](images/git-workshop/branches.svg)
+
+* a branch is a named reference to a commit
+* it moves along as you make new commits
+
+---
+
+## Dealing with branches
+
+![branches](images/git-workshop/branch-strategy.svg)
+
+* working code is on `master` branch
+* branch off to do your work
 * throw away branches after merging to master branch
+
+Getting fancy with Git flow:
+http://nvie.com/posts/a-successful-git-branching-model/
 
 ---
 
@@ -113,8 +136,6 @@ git mv
 ```
 git commit
 ```
-
-https://xkcd.com/1296/
 
 Variants:
 

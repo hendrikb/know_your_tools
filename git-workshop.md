@@ -51,7 +51,7 @@
 
 ## Dealing with branches
 
-![branches](images/git-workshop/branch-strategy.svg)
+![branch strategy](images/git-workshop/branch-strategy.svg)
 
 * working code is on `master` branch
 * branch off to do your work
@@ -64,14 +64,21 @@ http://nvie.com/posts/a-successful-git-branching-model/
 
 ## Merges
 
-* merge code from one branch into another branch
-  * e.g. your code goes back to master branch
+* "get that code from my branch into the `master` branch"
 * what if target branch has changed in between time? **merge conflict**
   * trivial merges are made automatically
-  * changes to the same file in different locations can be merged intelligently
-    by git itself
+    * different file changed
+    * same file, different location changed
   * changes to the same file in similar locations must be resolved manually
-* various "merge strategies" exist for various kind of scenarios
+
+---
+
+## Merge Strategies
+
+![merge strategies](images/git-workshop/merge-strategies.svg)
+
+* FF: does not touch history, only branches
+* Recursive: creates a merge commit
 
 ---
 

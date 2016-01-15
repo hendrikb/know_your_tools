@@ -23,7 +23,7 @@
 ## Workflow (local)
 
 ```
-| Reposotory |
+| Repository |
 | Stage |
 |Workding Dir|
 ```
@@ -36,7 +36,7 @@
 > -- https://twitter.com/tabqwerty/status/45611899953491968
 
 * working code is on **master** branch
-* branch off of master branch to 
+* branch off of master branch to
   * develop features
   * test things
 * throw away branches after merging to master branch
@@ -45,7 +45,7 @@
 
 ## Merges
 
-* merge code from one branch into another branch 
+* merge code from one branch into another branch
   * e.g. your code goes back to master branch
 * what if target branch has changed in between time? **merge conflict**
   * trivial merges are made automatically

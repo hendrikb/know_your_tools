@@ -86,6 +86,8 @@ http://nvie.com/posts/a-successful-git-branching-model/
 
 ## Remotes
 
+![remotes](images/git-workshop/remotes.svg)
+
   * "other locations" of your project's source code
   * conventions:
     * "**origin**", services our code centrally

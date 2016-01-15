@@ -25,7 +25,7 @@
 ```
 | Repository |
 | Stage |
-|Workding Dir|
+| Working Dir |
 ```
 
 ---

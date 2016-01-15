@@ -101,7 +101,7 @@ http://nvie.com/posts/a-successful-git-branching-model/
 
 ## Prerequisites (on Ubuntu)
 
-```
+```bash
 sudo apt-get install git openssh-client
 ssh-key-gen -b 4096 -C 'your.email@example.com'
 ```
@@ -110,7 +110,7 @@ ssh-key-gen -b 4096 -C 'your.email@example.com'
 
 ## Configuring Git
 
-```
+```bash
 git config --global user.name 'Your Name'
 git config --global user.email 'your.email@example.com'
 ```
@@ -119,13 +119,13 @@ git config --global user.email 'your.email@example.com'
 
 ## Basic Commands
 
-```
+```bash
 git help
 ```
 
 ---
 
-```
+```bash
 git init
 git status
 ```
@@ -134,7 +134,7 @@ git status
 
 ## Stuff to stage ...
 
-```
+```bash
 git add
 git rm
 git mv
@@ -144,13 +144,13 @@ git mv
 
 ## From Stage to Repository
 
-```
+```bash
 git commit
 ```
 
 Variants:
 
-```
+```bash
 git commit -m'use describing message'
 git commit -am'go from working dir to repo directly'
 ```
@@ -163,7 +163,7 @@ Pro Tip: https://github.com/erlang/otp/wiki/Writing-good-commit-messages
 
 Warning, there be dragons ahead!
 
-```
+```bash
 git reset
 git revert
 git clean
@@ -173,7 +173,7 @@ git clean
 
 # Branches, Merges, Conflicts, ...
 
-```
+```bash
 git branch
 
 git checkout
@@ -188,7 +188,7 @@ git rebase
 
 # Working with remote repositories
 
-```
+```bash
 git remote
 git clone
 

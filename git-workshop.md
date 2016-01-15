@@ -208,11 +208,19 @@ git push
 
 # Goodies
 
-  * git stash
-  * use bash aliases: alias gs='\git status'
-  * git commit --amend
-  * git cherry-pick
-  * git instaweb --http=webrick
+## Improve your git experience
+
+* use bash aliases: alias gs='\git status'
+* Customize your console: https://github.com/git/git/tree/master/contrib/completion
+
+## Discover more git capabilities
+
+* git stash
+* git commit --amend
+* git cherry-pick
+* git reflog
+* git rerere
+* git instaweb --http=webrick
 
 ---
 

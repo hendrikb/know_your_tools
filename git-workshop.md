@@ -20,13 +20,9 @@
 
 ---
 
-## Workflow (local)
+## Basic Workflow
 
-```
-| Repository |
-| Stage |
-| Working Dir |
-```
+![workflow](images/git-workshop/workflow.svg)
 
 ---
 

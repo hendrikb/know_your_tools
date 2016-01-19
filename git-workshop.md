@@ -16,47 +16,77 @@
 # Theory
 
 > finally figuring out that git commands are strangely named graph manipulation commands--creating/deleting nodes, moving pointers around
-> -- Kent Beck https://twitter.com/kentbeck/status/42657237986054144
+
+-- Kent Beck https://twitter.com/kentbeck/status/42657237986054144
 
 ---
 
-## Workflow (local)
+## Basic Workflow
 
-```
-| Reposotory |
-| Stage |
-|Workding Dir|
-```
+![workflow](images/git-workshop/workflow.svg)
+
+---
+
+## Keeping a History
+
+![XKCD commit history](https://imgs.xkcd.com/comics/git_commit.png)
+(https://xkcd.com/1296/)
+
+* changes stored in commits
+* each commit references its parent
+* => linked list building a history of your code
 
 ---
 
 ## Branches
 
 > git gets easier once you get the basic idea that branches are homeomorphic endofunctors mapping submanifolds of a Hilbert space.
-> -- https://twitter.com/tabqwerty/status/45611899953491968
 
-* working code is on **master** branch
-* branch off of master branch to 
-  * develop features
-  * test things
+-- https://twitter.com/tabqwerty/status/45611899953491968
+
+![branches](images/git-workshop/branches.svg)
+
+* a branch is a named reference to a commit
+* it moves along as you make new commits
+
+---
+
+## Dealing with branches
+
+![branch strategy](images/git-workshop/branch-strategy.svg)
+
+* working code is on `master` branch
+* branch off to do your work
 * throw away branches after merging to master branch
+
+Getting fancy with Git flow:
+http://nvie.com/posts/a-successful-git-branching-model/
 
 ---
 
 ## Merges
 
-* merge code from one branch into another branch 
-  * e.g. your code goes back to master branch
+* "get that code from my branch into the `master` branch"
 * what if target branch has changed in between time? **merge conflict**
-  * trivial merges are made automatically
-  * changes to the same file in different locations can be merged intelligently
-    by git itself
-  * changes to the same file in similar locations must be resolved manually
-* various "merge strategies" exist for various kind of scenarios
+    * trivial merges are made automatically
+        * different file changed
+        * same file, different location changed
+    * changes to the same file in similar locations must be resolved manually
+
+---
+
+## Merge Strategies
+
+![merge strategies](images/git-workshop/merge-strategies.svg)
+
+* FF: does not touch history, only branches
+* Recursive: creates a merge commit
 
 ---
 
 ## Remotes
+
+![remotes](images/git-workshop/remotes.svg)
 
   * "other locations" of your project's source code
   * conventions:
@@ -69,18 +99,18 @@
 
 ---
 
-## Prerequesites (on Ubuntu)
+## Prerequisites (on Ubuntu)
 
-```
+```bash
 sudo apt-get install git openssh-client
-ssh-key-gen -b 4096 -C'your@example.com'
+ssh-key-gen -b 4096 -C 'your.email@example.com'
 ```
 
 ---
 
 ## Configuring Git
 
-```
+```bash
 git config --global user.name 'Your Name'
 git config --global user.email 'your.email@example.com'
 ```
@@ -89,22 +119,26 @@ git config --global user.email 'your.email@example.com'
 
 ## Basic Commands
 
-```
+```bash
 git help
 ```
 
 ---
 
-```
-git init
+## Getting started...
+
+```bash
+git clone
 git status
 ```
+
+Copy repo URL here: http://tiny.cc/kp_git_ws
 
 ---
 
 ## Stuff to stage ...
 
-```
+```bash
 git add
 git rm
 git mv
@@ -114,17 +148,15 @@ git mv
 
 ## From Stage to Repository
 
-```
+```bash
 git commit
 ```
 
-https://xkcd.com/1296/
-
 Variants:
 
-```
-git commit -m'use describing message'
-git commit -am'go from working dir to repo directly'
+```bash
+git commit -m 'Use describing message'
+git commit -am 'Commit all the things!'
 ```
 
 Pro Tip: https://github.com/erlang/otp/wiki/Writing-good-commit-messages
@@ -135,7 +167,7 @@ Pro Tip: https://github.com/erlang/otp/wiki/Writing-good-commit-messages
 
 Warning, there be dragons ahead!
 
-```
+```bash
 git reset
 git revert
 git clean
@@ -143,25 +175,29 @@ git clean
 
 ---
 
-# Branches, Merges, Conflicts, ...
+## Branches, Merges, Conflicts, ...
 
-```
-git branches
-
+```bash
+git branch
 git checkout
-
 git merge
-
-git rebase
-
 ```
 
 ---
 
-# Working with remote repositories
+## Getting fancy with rebase
 
-```
-git remotes
+![rebase](images/git-workshop/rebase.svg)
+
+* "Cuts" your history and "glues" it onto the desired commit
+* actually does not cut anything, all commits are *replayed* (i.e. a copy is created)
+
+---
+
+## Working with remote repositories
+
+```bash
+git remote
 git clone
 
 git pull
@@ -172,11 +208,19 @@ git push
 
 # Goodies
 
-  * git stash
-  * use bash aliases: alias gs='\git status'
-  * git commit --amend
-  * git cherry-pick
-  * git instaweb --http=webrick
+## Improve your git experience
+
+* use bash aliases: alias gs='\git status'
+* Customize your console: https://github.com/git/git/tree/master/contrib/completion
+
+## Discover more git capabilities
+
+* git stash
+* git commit --amend
+* git cherry-pick
+* git reflog
+* git rerere
+* git instaweb --http=webrick
 
 ---
 
